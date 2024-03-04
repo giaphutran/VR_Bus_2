@@ -2,6 +2,7 @@ import * as THREE from "three";
 //import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { VRButton } from "three/addons/webxr/VRButton";
+import { OBJLoader } from "three/addons/loaders/OBJLoader";
 function normalize(val, min, max) {
   return Math.max(0, Math.min(1, (val - min) / (max - min)));
 }
@@ -12,25 +13,53 @@ function zTween(_val, _target, _ratio) {
   return _val + (_target - _val) * Math.min(_ratio, 1.0);
 }
 
-// //3d model car
-
-const loader = new GLTFLoader();
+// //3d model bus
+const busLoader = new GLTFLoader();
 let busModel;
-loader.load(
-  "/untitled.glb",
+busLoader.load(
+  "/generic_town_bus_rotated.glb",
   function (gltf) {
     busModel = gltf.scene;
     scene.add(busModel);
-    //Set position for 3D model bus
-    busModel.position.set(0, 3, 5);
-    busModel.scale.set(1, 1, 1);
-    busModel.rotation.y = Math.PI / 2;
+    if (busModel) {
+      busModel.position.set(0, 0, 0);
+      busModel.scale.set(0.1, 0.1, 0.1);
+      busModel.rotation.y = Math.PI / 2;
+    }
   },
   undefined,
   function (error) {
     console.error(error);
   }
 );
+//map
+const mapLoader2 = new GLTFLoader();
+let cityMap;
+mapLoader2.load("citymap-scaled-0.2.glb", function (gltf) {
+  cityMap = gltf.scene;
+  scene.add(cityMap);
+  if (cityMap) {
+    cityMap.position.set(0, -1, 0);
+  }
+});
+
+// const mapLoader = new GLTFLoader();
+// let map;
+// mapLoader.load(
+//   "/map2.glb",
+//   function (gltf) {
+//     map = gltf.scene;
+//     scene.add(map);
+//     if (map) {
+//       map.position.set(0, 0, 0);
+//       map.scale.set(2, 2, 2);
+//     }
+//   },
+//   undefined,
+//   function (error) {
+//     console.error(error);
+//   }
+// );
 
 // Set up the window
 const scene = new THREE.Scene();
@@ -49,14 +78,14 @@ renderer.xr.enabled = true;
 document.body.appendChild(VRButton.createButton(renderer));
 
 // Ground plane
-const planeGeometry = new THREE.PlaneGeometry(1000, 1000);
-const planeMaterial = new THREE.MeshLambertMaterial({
-  color: 0xff0000,
-  side: THREE.DoubleSide,
-});
-const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-plane.rotation.x = -Math.PI / 2;
-scene.add(plane);
+// const planeGeometry = new THREE.PlaneGeometry(1000, 1000);
+// const planeMaterial = new THREE.MeshLambertMaterial({
+//   color: 0xff0000,
+//   side: THREE.DoubleSide,
+// });
+// const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+// plane.rotation.x = -Math.PI / 2;
+// scene.add(plane);
 
 // Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -232,21 +261,25 @@ class Bus_Prop {
       busModel.rotation.y = this.theta;
       //Update camera view
       camera.position.set(
-        busModel.position.x + 10 * Math.sin(this.theta + Math.PI / 2),
+        busModel.position.x + 5 * Math.sin(this.theta + Math.PI / 2),
         10,
-        busModel.position.z + 10 * Math.cos(this.theta + Math.PI / 2)
+        busModel.position.z + 5 * Math.cos(this.theta + Math.PI / 2)
       );
       camera.lookAt(busModel.position);
     }
 
-    //  // Update the bus's position and rotation
+    //  // Update the cube's position and rotation
 
     bus.position.x = -this.pos.x;
     bus.position.z = -this.pos.y;
     bus.rotation.y = this.theta;
     // // Update camera view
-    //  camera.position.set(bus.position.x + 5 * Math.sin(this.theta+Math.PI/2), 4, bus.position.z + 5 * Math.cos(this.theta+Math.PI/2));
-    //  camera.lookAt(bus.position);
+    // camera.position.set(
+    //   bus.position.x + 5 * Math.sin(this.theta + Math.PI / 2),
+    //   4,
+    //   bus.position.z + 5 * Math.cos(this.theta + Math.PI / 2)
+    // );
+    // camera.lookAt(bus.position);
 
     //Momentum for the bus body, not sure if we will implement this
     this.longitMomentum = zTween(
