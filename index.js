@@ -5,6 +5,30 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { VRButton } from "three/addons/webxr/VRButton";
 import { OBJLoader } from "three/addons/loaders/OBJLoader";
 
+function init() {}
+
+// Set up the window
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Camera position
+camera.position.set(0, 10, 6);
+camera.lookAt(0, 0, 0);
+
+// Enable VR
+renderer.xr.enabled = true;
+document.body.appendChild(VRButton.createButton(renderer));
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(0, 1, 0);
+scene.add(directionalLight);
+
 //3d model bus
 const busLoader = new GLTFLoader();
 let busModel;
@@ -14,9 +38,8 @@ busLoader.load(
     busModel = gltf.scene;
     scene.add(busModel);
     if (busModel) {
-      busModel.position.set(0, 0, 0);
+      busModel.position.set(0, 0.15, 0);
       busModel.scale.set(0.1, 0.1, 0.1);
-      busModel.rotation.y = Math.PI / 2;
     }
   },
   undefined,
@@ -32,7 +55,7 @@ mapLoader2.load("citymap-scaled-0.2.glb", function (gltf) {
   cityMap = gltf.scene;
   scene.add(cityMap);
   if (cityMap) {
-    cityMap.position.set(0, -1, 0);
+    cityMap.position.set(0, 0, 0);
   }
 });
 
@@ -54,10 +77,12 @@ mapLoader2.load("citymap-scaled-0.2.glb", function (gltf) {
 //   }
 // );
 
+// Create a cannon.js world
 const physicsWorld = new CANNON.World({
   gravity: new CANNON.Vec3(0, -9.82, 0),
 });
 
+// Add a ground body
 const groundMaterial = new CANNON.Material('ground');
 const groundBody = new CANNON.Body({
   type: CANNON.Body.STATIC,
@@ -68,13 +93,13 @@ groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
 groundBody.position.set(0, 0, 0);
 physicsWorld.addBody(groundBody);
 
+// For testing only
 const prismBody = new CANNON.Body({
   mass: 0,
   shape: new CANNON.Box(new CANNON.Vec3(1, 5, 1))
 });
 prismBody.position.set(10, 0, -10);
 physicsWorld.addBody(prismBody);
-
 
 // Build the car chassis
 const chassisShape = new CANNON.Box(new CANNON.Vec3(1.3, 0.5, 6));
@@ -86,11 +111,11 @@ const vehicle = new CANNON.RigidVehicle({
   chassisBody: chassisBody,
 });
 
+// Add wheels to the vehicle
 const mass = 1;
 const wheelShape = new CANNON.Sphere(0.5);
 const wheelMaterial = new CANNON.Material('wheel');
 const down = new CANNON.Vec3(0, -1, 0);
-
 const wheelBody1 = new CANNON.Body({ mass, material: wheelMaterial });
 wheelBody1.addShape(wheelShape);
 vehicle.addWheel({
@@ -100,7 +125,6 @@ vehicle.addWheel({
   axis: new CANNON.Vec3(-1, 0, 0),
   direction: down,
 });
-
 const wheelBody2 = new CANNON.Body({ mass, material: wheelMaterial });
 wheelBody2.addShape(wheelShape);
 vehicle.addWheel({
@@ -110,7 +134,6 @@ vehicle.addWheel({
   axis: new CANNON.Vec3(1, 0, 0),
   direction: down,
 });
-
 const wheelBody3 = new CANNON.Body({ mass, material: wheelMaterial });
 wheelBody3.addShape(wheelShape);
 vehicle.addWheel({
@@ -119,7 +142,6 @@ vehicle.addWheel({
   axis: new CANNON.Vec3(-1, 0, 0),
   direction: down,
 });
-
 const wheelBody4 = new CANNON.Body({ mass, material: wheelMaterial });
 wheelBody4.addShape(wheelShape);
 vehicle.addWheel({
@@ -128,17 +150,19 @@ vehicle.addWheel({
   axis: new CANNON.Vec3(1, 0, 0),
   direction: down,
 });
-
 vehicle.wheelBodies.forEach((wheelBody) => {
   // Some damping to not spin wheels too fast
-  wheelBody.angularDamping = 0.4
+  wheelBody.angularDamping = 0.9
 });
 
 vehicle.addToWorld(physicsWorld);
+// Track rotation of the vehicle
+const angle = new CANNON.Vec3();
+vehicle.chassisBody.quaternion.toEuler(angle);
 
 // Define interactions between wheels and ground
 const wheel_ground = new CANNON.ContactMaterial(wheelMaterial, groundMaterial, {
-  friction: 100000,
+  friction: 1,
   restitution: 0,
   contactEquationStiffness: 1000,
 });
@@ -146,10 +170,11 @@ physicsWorld.addContactMaterial(wheel_ground);
 
 // Keybindings
 // Add force on keydown
-const maxSpeed = 50;
+const maxSpeed = 30;
+const maxForce = 20;
 document.addEventListener('keydown', (event) => {
 const maxSteerVal = Math.PI / 8;
-const maxForce = 30;
+
 
 switch (event.key) {
   case 'w':
@@ -198,31 +223,6 @@ switch (event.key) {
 }
 })
 
-// Set up the window
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-// Camera position
-camera.position.set(0, 10, 0.2);
-camera.lookAt(0, 0, 0);
-
-// Enable VR
-renderer.xr.enabled = true;
-document.body.appendChild(VRButton.createButton(renderer));
-
-// Lighting
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(0, 1, 0);
-scene.add(directionalLight);
-
-const angle = new CANNON.Vec3();
-vehicle.chassisBody.quaternion.toEuler(angle);
-
 const cannonDebugger = new CannonDebugger(scene, physicsWorld, {});
 // Animation loop
 function animate() {
@@ -230,19 +230,15 @@ function animate() {
     physicsWorld.fixedStep();
     cannonDebugger.update();
     vehicle.chassisBody.quaternion.toEuler(angle);
-    // if (Math.abs(vehicle.getWheelSpeed(3)) >= maxSpeed) {
-    //     vehicle.setMotorSpeed(-maxSpeed, 2);
-    //     vehicle.setMotorSpeed(-maxSpeed, 3);
-    // }
     if (busModel) {
-        // Update the bus's position and rotation
-        busModel.position.x = vehicle.chassisBody.position.x;
-        busModel.position.z = vehicle.chassisBody.position.z;
-        busModel.rotation.y = angle.y - Math.PI/2;
+      // Update the bus's position and rotation
+      busModel.position.x = vehicle.chassisBody.position.x;
+      busModel.position.z = vehicle.chassisBody.position.z;
+      busModel.rotation.y = angle.y - Math.PI/2;
     }
     camera.position.set(vehicle.chassisBody.position.x + 6 * Math.sin(angle.y), 10, vehicle.chassisBody.position.z + 6 * Math.cos(angle.y));
     camera.lookAt(vehicle.chassisBody.position.x, 0, vehicle.chassisBody.position.z);
-    //console.log(groundMaterial.friction);
+    //console.log(vehicle.getWheelSpeed(2));
     renderer.render(scene, camera);
   });
 }
