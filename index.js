@@ -77,7 +77,7 @@ physicsWorld.addBody(prismBody);
 
 
 // Build the car chassis
-const chassisShape = new CANNON.Box(new CANNON.Vec3(1.5, 0.5, 3));
+const chassisShape = new CANNON.Box(new CANNON.Vec3(1.3, 0.5, 6));
 const chassisBody = new CANNON.Body({ mass: 10 });
 chassisBody.addShape(chassisShape, new CANNON.Vec3(0, 0.75, 0));
 
@@ -96,7 +96,7 @@ wheelBody1.addShape(wheelShape);
 vehicle.addWheel({
   isFrontWheel: true,
   body: wheelBody1,
-  position: new CANNON.Vec3(-1.5, 0.5, -2),
+  position: new CANNON.Vec3(-1.3, 0.5, -3.5),
   axis: new CANNON.Vec3(-1, 0, 0),
   direction: down,
 });
@@ -106,7 +106,7 @@ wheelBody2.addShape(wheelShape);
 vehicle.addWheel({
   isFrontWheel: true,
   body: wheelBody2,
-  position: new CANNON.Vec3(1.5, 0.5, -2),
+  position: new CANNON.Vec3(1.3, 0.5, -3.5),
   axis: new CANNON.Vec3(1, 0, 0),
   direction: down,
 });
@@ -115,7 +115,7 @@ const wheelBody3 = new CANNON.Body({ mass, material: wheelMaterial });
 wheelBody3.addShape(wheelShape);
 vehicle.addWheel({
   body: wheelBody3,
-  position: new CANNON.Vec3(-1.5, 0.5, 2),
+  position: new CANNON.Vec3(-1.3, 0.5, 2.5),
   axis: new CANNON.Vec3(-1, 0, 0),
   direction: down,
 });
@@ -124,7 +124,7 @@ const wheelBody4 = new CANNON.Body({ mass, material: wheelMaterial });
 wheelBody4.addShape(wheelShape);
 vehicle.addWheel({
   body: wheelBody4,
-  position: new CANNON.Vec3(1.5, 0.5, 2),
+  position: new CANNON.Vec3(1.3, 0.5, 2.5),
   axis: new CANNON.Vec3(1, 0, 0),
   direction: down,
 });
@@ -173,7 +173,6 @@ switch (event.key) {
   break;
 }
 })
-
 // Reset force on keyup
 document.addEventListener('keyup', (event) => {
 switch (event.key) {
@@ -207,7 +206,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Camera position
-camera.position.set(0, 0, 10);
+camera.position.set(0, 10, 0.2);
 camera.lookAt(0, 0, 0);
 
 // Enable VR
@@ -239,7 +238,7 @@ function animate() {
         // Update the bus's position and rotation
         busModel.position.x = vehicle.chassisBody.position.x;
         busModel.position.z = vehicle.chassisBody.position.z;
-        busModel.rotation.y = angle.y - Math.PI;
+        busModel.rotation.y = angle.y - Math.PI/2;
     }
     camera.position.set(vehicle.chassisBody.position.x + 6 * Math.sin(angle.y), 10, vehicle.chassisBody.position.z + 6 * Math.cos(angle.y));
     camera.lookAt(vehicle.chassisBody.position.x, 0, vehicle.chassisBody.position.z);
