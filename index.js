@@ -65,24 +65,6 @@ mapLoader2.load("manhattan-map.glb", function (gltf) {
   }
 });
 
-// const mapLoader = new GLTFLoader();
-// let map;
-// mapLoader.load(
-//   "/map2.glb",
-//   function (gltf) {
-//     map = gltf.scene;
-//     scene.add(map);
-//     if (map) {
-//       map.position.set(0, 0, 0);
-//       map.scale.set(2, 2, 2);
-//     }
-//   },
-//   undefined,
-//   function (error) {
-//     console.error(error);
-//   }
-// );
-
 // Create a cannon.js world
 const physicsWorld = new CANNON.World({
   gravity: new CANNON.Vec3(0, -9.82, 0),
@@ -228,7 +210,23 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
+// var controller = renderer.xr.getController(0);
+// controller.addEventListener("selectstart", onSelectStart);
+// controller.addEventListener("selectend", onSelectEnd);
+// scene.add(controller);
+// function onSelectStart(event) {
+//   console.log("1");
+// }
+// function onSelectEnd(event) {
+//   console.log("2");
+// }
+const controller2 = renderer.xr.getController(0);
+controller2.addEventListener("connected", (e) => {
+  controller2.gamepad = e.data.gamepad;
+  console.log("1");
+});
 const cannonDebugger = new CannonDebugger(scene, physicsWorld, {});
+
 // Animation loop
 function animate() {
   renderer.setAnimationLoop(() => {
@@ -246,6 +244,7 @@ function animate() {
       30,
       vehicle.chassisBody.position.z + 5 * Math.cos(angle.y)
     );
+
     camera.lookAt(
       vehicle.chassisBody.position.x,
       0,
