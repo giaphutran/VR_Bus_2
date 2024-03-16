@@ -58,7 +58,7 @@ busLoader.load(
     busModel = gltf.scene;
     scene.add(busModel);
     if (busModel) {
-      busModel.position.set(0, 0.15, 0);
+      busModel.position.set(0, 0, 0);
       busModel.scale.set(0.1, 0.1, 0.1);
     }
   },
@@ -94,11 +94,19 @@ physicsWorld.addBody(groundBody);
 function collisionBoxes() {
   const hb1 = new CANNON.Body({
     mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(20, 50, 20)),
+    shape: new CANNON.Box(new CANNON.Vec3(15, 10, 40)),
   });
-  hb1.position.set(40, 0, -20);
-  hb1.quaternion.setFromEuler(0, Math.PI / 4, 0);
+  hb1.position.set(18, 0, -53);
+  //hb1.quaternion.setFromEuler(0, Math.PI / 4, 0);
   physicsWorld.addBody(hb1);
+
+  const hb2 = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(45, 10, 22)),
+  });
+  hb2.position.set(-9, 0, -110);
+  hb2.quaternion.setFromEuler(0, 0, 0);
+  physicsWorld.addBody(hb2);
 }
 collisionBoxes();
 
@@ -169,8 +177,8 @@ const wheel_ground = new CANNON.ContactMaterial(wheelMaterial, groundMaterial, {
 });
 physicsWorld.addContactMaterial(wheel_ground);
 
-const maxSpeed = 30;
-const maxForce = 20;
+const maxSpeed = 40;
+const maxForce = 40;
 const maxSteerVal = Math.PI / 8;
 // Add force on keydown
 document.addEventListener("keydown", (event) => {
@@ -194,6 +202,13 @@ document.addEventListener("keydown", (event) => {
       vehicle.setSteeringValue(-maxSteerVal, 0);
       vehicle.setSteeringValue(-maxSteerVal, 1);
       break;
+    case "q":
+      console.log(
+        "x: ",
+        vehicle.chassisBody.position.x,
+        " z: ",
+        vehicle.chassisBody.position.z
+      );
   }
 });
 // Reset force on keyup
@@ -260,31 +275,31 @@ function controllerInput() {
 }
 
 // document.addEventListener("keydown", (event) => {
-//     switch (event.key) {
-//         case "w":
-//         camera.position.z -= 3;
-//         break;
+//   switch (event.key) {
+//     case "w":
+//       camera.position.z -= 3;
+//       break;
 
-//         case "s":
-//         camera.position.z += 3;
-//         break;
+//     case "s":
+//       camera.position.z += 3;
+//       break;
 
-//         case "a":
-//         camera.position.x -= 3;
-//         break;
+//     case "a":
+//       camera.position.x -= 3;
+//       break;
 
-//         case "d":
-//         camera.position.x += 3;
-//         break;
+//     case "d":
+//       camera.position.x += 3;
+//       break;
 
-//         case "r":
-//         camera.position.y *= 2;
-//         break;
+//     case "r":
+//       camera.position.y *= 2;
+//       break;
 
-//         case "f":
-//         camera.position.y /= 2;
-//         break;
-//     }
+//     case "f":
+//       camera.position.y /= 2;
+//       break;
+//   }
 // });
 
 const cannonDebugger = new CannonDebugger(scene, physicsWorld, {});
@@ -302,19 +317,35 @@ function animate() {
       busModel.rotation.y = angle.y - Math.PI / 2;
     }
     controllerInput();
+    // camera.position.set(
+    //   vehicle.chassisBody.position.x + 5 * Math.sin(angle.y),
+    //   30,
+    //   vehicle.chassisBody.position.z + 5 * Math.cos(angle.y)
+    // );
     camera.position.set(
-      vehicle.chassisBody.position.x + 5 * Math.sin(angle.y),
-      30,
-      vehicle.chassisBody.position.z + 5 * Math.cos(angle.y)
+      vehicle.chassisBody.position.x,
+      60,
+      vehicle.chassisBody.position.z
     );
     camera.lookAt(
       vehicle.chassisBody.position.x,
       0,
       vehicle.chassisBody.position.z
     );
-    //controls.target.set(vehicle.chassisBody.position.x + 5 * Math.sin(angle.y), 30, vehicle.chassisBody.position.z + 5 * Math.cos(angle.y));
-    //controls.update();
-    //console.log(vehicle.getWheelSpeed(2));
+    // controls.target.set(
+    //   vehicle.chassisBody.position.x + 5 * Math.sin(angle.y),
+    //   30,
+    //   vehicle.chassisBody.position.z + 5 * Math.cos(angle.y)
+    // );
+    // controls.update();
+    // console.log(vehicle.getWheelSpeed(2));
+
+    // console.log(
+    //   "x: ",
+    //   vehicle.chassisBody.position.x,
+    //   " y: ",
+    //   vehicle.chassisBody.position.z
+    // );
     renderer.render(scene, camera);
   });
 }
