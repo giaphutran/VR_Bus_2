@@ -67,9 +67,6 @@ busLoader.load(
     console.error(error);
   }
 );
-if (busModel) {
-  busModel.position.set(0, 0, -10);
-}
 // Map
 const mapLoader2 = new GLTFLoader();
 let cityMap;
@@ -220,6 +217,20 @@ function collisionBoxes() {
   });
   hb18LowLeftTwoWayStreetBuildingBlock.position.set(1.5, 0, -769);
   physicsWorld.addBody(hb18LowLeftTwoWayStreetBuildingBlock);
+
+  const hb19LowLeftLaneDivVerti = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(6, 5, 127)),
+  });
+  hb19LowLeftLaneDivVerti.position.set(71, 0, -966);
+  physicsWorld.addBody(hb19LowLeftLaneDivVerti);
+
+  const hb20MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(42, 10, 195)),
+  });
+  hb20MidLeftTwoWayStreetBuildingBlock.position.set(-3.5, 0, -1213);
+  physicsWorld.addBody(hb20MidLeftTwoWayStreetBuildingBlock);
 }
 
 collisionBoxes();
@@ -324,6 +335,8 @@ document.addEventListener("keydown", (event) => {
         vehicle.chassisBody.position.z
       );
       break;
+    case "c":
+      chassisBody.position.set(0, 0, -600);
   }
 });
 // Reset force on keyup
