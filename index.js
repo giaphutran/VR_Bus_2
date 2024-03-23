@@ -194,43 +194,43 @@ function collisionBoxes() {
   // });
   // hb17LowLeftLaneDivVerti.position.set(69.5, 0, -670.5);
   // physicsWorld.addBody(hb17LowLeftLaneDivVerti);
-  // const hb18LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(36, 10, 226)),
-  // });
-  // hb18LowLeftTwoWayStreetBuildingBlock.position.set(1.5, 0, -769);
-  // physicsWorld.addBody(hb18LowLeftTwoWayStreetBuildingBlock);
-  // const hb19LowLeftLaneDivVerti = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(6, 5, 127)),
-  // });
-  // hb19LowLeftLaneDivVerti.position.set(71, 0, -966);
-  // physicsWorld.addBody(hb19LowLeftLaneDivVerti);
-  // const hb20MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(42, 10, 195)),
-  // });
-  // hb20MidLeftTwoWayStreetBuildingBlock.position.set(-3.5, 0, -1213);
-  // physicsWorld.addBody(hb20MidLeftTwoWayStreetBuildingBlock);
-  // const hb21MidLeftLaneDivVerti = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(6, 5, 161)),
-  // });
-  // hb21MidLeftLaneDivVerti.position.set(70, 0, -1273);
-  // physicsWorld.addBody(hb21MidLeftLaneDivVerti);
-  // const hb22LowLeftPlantBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(139, 5, 14)),
-  // });
-  // hb22LowLeftPlantBlock.position.set(246.5, 0, -105);
-  // physicsWorld.addBody(hb22LowLeftPlantBlock);
-  // const hb23LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(125, 10, 58)),
-  // });
-  //wtf
-  // hb23LowLeftTwoWayStreetBuildingBlock.position.set(235, 0, -198);
-  // physicsWorld.addBody(hb23LowLeftTwoWayStreetBuildingBlock);
+  const hb18LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(36, 10, 226)),
+  });
+  hb18LowLeftTwoWayStreetBuildingBlock.position.set(1.5, 0, -769);
+  physicsWorld.addBody(hb18LowLeftTwoWayStreetBuildingBlock);
+  const hb19LowLeftLaneDivVerti = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(6, 5, 127)),
+  });
+  hb19LowLeftLaneDivVerti.position.set(71, 0, -966);
+  physicsWorld.addBody(hb19LowLeftLaneDivVerti);
+  const hb20MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(42, 10, 195)),
+  });
+  hb20MidLeftTwoWayStreetBuildingBlock.position.set(-3.5, 0, -1213);
+  physicsWorld.addBody(hb20MidLeftTwoWayStreetBuildingBlock);
+  const hb21MidLeftLaneDivVerti = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(6, 5, 161)),
+  });
+  hb21MidLeftLaneDivVerti.position.set(70, 0, -1273);
+  physicsWorld.addBody(hb21MidLeftLaneDivVerti);
+  const hb22LowLeftPlantBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(139, 5, 14)),
+  });
+  hb22LowLeftPlantBlock.position.set(246.5, 0, -105);
+  physicsWorld.addBody(hb22LowLeftPlantBlock);
+  const hb23LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(125, 10, 58)),
+  });
+  hb23LowLeftTwoWayStreetBuildingBlock.position.set(235, 0, -198);
+  physicsWorld.addBody(hb23LowLeftTwoWayStreetBuildingBlock);
+  //Plane collision, bad thing so far
   // const planeShape = new CANNON.Plane();
   // const planeBody = new CANNON.Body({
   //   mass: 0,
@@ -239,7 +239,7 @@ function collisionBoxes() {
   // });
   // planeBody.position.set(-20.5, -3, -113);
   // planeBody.quaternion.setFromEuler(0, 0, Math.PI / 30);
-  // planeBody.addShape(planeShape);
+  // // planeBody.addShape(planeShape);
   // physicsWorld.addBody(planeBody);
   // const rampPlane = new CANNON.Body({
   //   mass: 1,
@@ -249,16 +249,93 @@ function collisionBoxes() {
   // rampPlane.quaternion.setFromEuler(0, 0, Math.PI / 2);
   // physicsWorld.addBody(rampPlane);
 
-  const hb24LowLeftRamp1 = new CANNON.Body({
+  // const hb24LowLeftRamp1 = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(46.5, 0.1, 8)),
+  // });
+  // hb24LowLeftRamp1.position.set(-11, 0, -113);
+  // hb24LowLeftRamp1.quaternion.setFromEuler(0, 0, Math.PI / 30);
+  // physicsWorld.addBody(hb24LowLeftRamp1);
+  // const hb25LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(31, 10, 123)),
+  // });
+  // hb25LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -378);
+  // physicsWorld.addBody(hb25LowLeftTwoWayStreetBuildingBlock);
+  // const hb26LowLeftTwoWayStreetPavement = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(31, 10, 5.5)),
+  // });
+  // hb26LowLeftTwoWayStreetPavement.position.set(132, 0, -520);
+  // physicsWorld.addBody(hb26LowLeftTwoWayStreetPavement);
+
+  // const hb27LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(32, 10, 63)),
+  // });
+  // hb27LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -605);
+  // physicsWorld.addBody(hb27LowLeftTwoWayStreetBuildingBlock);
+  // const hb28LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(27, 10, 65)),
+  // });
+  // hb28LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -738);
+  // physicsWorld.addBody(hb28LowLeftTwoWayStreetBuildingBlock);
+
+  // const hb29LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(75, 10, 79)),
+  // });
+  // hb29LowLeftTwoWayStreetBuildingBlock.position.set(181, 0, -916);
+  // physicsWorld.addBody(hb29LowLeftTwoWayStreetBuildingBlock);
+
+  // const hb30LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(71, 10, 34)),
+  // });
+  // hb30LowLeftTwoWayStreetBuildingBlock.position.set(347, 0, -878);
+  // physicsWorld.addBody(hb30LowLeftTwoWayStreetBuildingBlock);
+
+  // const hb31LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(72.5, 10, 37)),
+  // });
+  // hb31LowLeftTwoWayStreetBuildingBlock.position.set(345, 0, -966);
+  // physicsWorld.addBody(hb31LowLeftTwoWayStreetBuildingBlock);
+
+  // const hb32LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(33, 10, 33)),
+  // });
+  // hb32LowLeftTwoWayStreetBuildingBlock.position.set(385, 0, -1054);
+  // physicsWorld.addBody(hb32LowLeftTwoWayStreetBuildingBlock);
+  // const hb33LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(33, 10, 33)),
+  // });
+  // hb33LowLeftTwoWayStreetBuildingBlock.position.set(305, 0, -1054);
+  // physicsWorld.addBody(hb33LowLeftTwoWayStreetBuildingBlock);
+
+  // const hb34LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(75, 10, 38)),
+  // });
+  // hb34LowLeftTwoWayStreetBuildingBlock.position.set(182, 0, -1054);
+  // physicsWorld.addBody(hb34LowLeftTwoWayStreetBuildingBlock);
+
+  const hb35LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
     mass: 0,
-    //Tried to make the bus go on plane, didn't work
-    // friction: 20,
-    // restitution: 10,
-    shape: new CANNON.Box(new CANNON.Vec3(42.5, 0.1, 8)),
+    shape: new CANNON.Box(new CANNON.Vec3(120, 10, 28)),
   });
-  hb24LowLeftRamp1.position.set(-13.5, 0, -113);
-  hb24LowLeftRamp1.quaternion.setFromEuler(0, 0, Math.PI / 30);
-  physicsWorld.addBody(hb24LowLeftRamp1);
+  hb35LowLeftTwoWayStreetBuildingBlock.position.set(225, 0, -1156);
+  physicsWorld.addBody(hb35LowLeftTwoWayStreetBuildingBlock);
+
+  const hb36LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(53, 10, 29)),
+  });
+  hb36LowLeftTwoWayStreetBuildingBlock.position.set(415, 0, -1160);
+  physicsWorld.addBody(hb36LowLeftTwoWayStreetBuildingBlock);
 }
 
 collisionBoxes();
@@ -274,7 +351,7 @@ const vehicle = new CANNON.RigidVehicle({
 });
 
 // Add wheels to the vehicle
-const mass = 1.4;
+const mass = 1.45;
 const wheelShape = new CANNON.Sphere(0.5);
 const wheelMaterial = new CANNON.Material("wheel");
 const down = new CANNON.Vec3(0, -1, 0);
@@ -330,7 +407,7 @@ const wheel_ground = new CANNON.ContactMaterial(wheelMaterial, groundMaterial, {
 });
 physicsWorld.addContactMaterial(wheel_ground);
 const maxSpeed = 40;
-const maxForce = 200;
+const maxForce = 220;
 const maxSteerVal = Math.PI / 8;
 
 let currentInclineAngle = 0;
@@ -405,7 +482,7 @@ document.addEventListener("keydown", (event) => {
         0
       );
       vehicle.chassisBody.velocity.set(0, 0, 0);
-      vehicle.chassisBody.angularVelocity, set(0, 0, 0);
+      vehicle.chassisBody.angularVelocity.set(0, 0, 0);
 
       break;
   }
