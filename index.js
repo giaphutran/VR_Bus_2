@@ -91,109 +91,109 @@ groundBody.position.set(0, 0, 0);
 physicsWorld.addBody(groundBody);
 
 function collisionBoxes() {
-  // const hb1LowLeft = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(15, 10, 39)),
-  // });
-  // hb1LowLeft.position.set(20, 0, -38);
-  // //hb1LowLeft.quaternion.setFromEuler(0, Math.PI / 4, 0);
-  // physicsWorld.addBody(hb1LowLeft);
-  // const hb2LowLeft = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(45, 10, 23)),
-  // });
-  // hb2LowLeft.position.set(-9, 0, -94);
-  // physicsWorld.addBody(hb2LowLeft);
-  // const hb3LowLeft = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(10, 10, 19.5)),
-  // });
-  // hb3LowLeft.position.set(44, 0, 19);
-  // physicsWorld.addBody(hb3LowLeft);
-  // const hb4LowLeft = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(48, 10, 7)),
-  // });
-  // hb4LowLeft.position.set(74, 0, -10);
-  // physicsWorld.addBody(hb4LowLeft);
-  // const hb5LowLeft = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(26, 10, 10)),
-  // });
-  // hb5LowLeft.position.set(-30, 0, -50);
-  // physicsWorld.addBody(hb5LowLeft);
-  // const hb6LowLeft = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(15.5, 10, 28)),
-  // });
-  // hb6LowLeft.position.set(-18.8, 0, -23.5);
-  // physicsWorld.addBody(hb6LowLeft);
-  // const hb7LowLeftCorner = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(60, 10, 53)),
-  // });
-  // hb7LowLeftCorner.position.set(-38, 0, 61);
-  // physicsWorld.addBody(hb7LowLeftCorner);
-  // const hb8LeftMostSide = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(15, 10, 1357)),
-  // });
-  // hb8LeftMostSide.position.set(-89, 0, -1218);
-  // physicsWorld.addBody(hb8LeftMostSide);
-  // const hb9 = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(22, 10, 12)),
-  // });
-  // hb9.position.set(-49, 0, -187.5);
-  // physicsWorld.addBody(hb9);
-  // const hb10LeftMostSide = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(4, 10, 1227)),
-  // });
-  // hb10LeftMostSide.position.set(-68, 0, -1418);
-  // physicsWorld.addBody(hb10LeftMostSide);
-  // const hb11LowLeftTwoWayStreet = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(28, 10, 8)),
-  // });
-  // hb11LowLeftTwoWayStreet.position.set(-25.5, 0, -150);
-  // physicsWorld.addBody(hb11LowLeftTwoWayStreet);
-  // const hb12LowLeftTwoWayStreet = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(19, 10, 30)),
-  // });
-  // hb12LowLeftTwoWayStreet.position.set(15, 0, -169);
-  // physicsWorld.addBody(hb12LowLeftTwoWayStreet);
-  // const hb13LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(40, 10, 40)),
-  // });
-  // hb13LowLeftTwoWayStreetBuildingBlock.position.set(-3.5, 0, -258.5);
-  // physicsWorld.addBody(hb13LowLeftTwoWayStreetBuildingBlock);
-  // const hb14LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(41, 10, 100)),
-  // });
-  // hb14LowLeftTwoWayStreetBuildingBlock.position.set(-4, 0, -421);
-  // physicsWorld.addBody(hb14LowLeftTwoWayStreetBuildingBlock);
-  // const hb15LowLeftLaneDivVerti = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(5.5, 5, 235)),
-  // });
-  // hb15LowLeftLaneDivVerti.position.set(72, 0, -287);
-  // physicsWorld.addBody(hb15LowLeftLaneDivVerti);
-  // const hb16LowLeftLaneDivHori = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(624, 5, 4)),
-  // });
-  // hb16LowLeftLaneDivHori.position.set(691.5, 0, -54);
-  // physicsWorld.addBody(hb16LowLeftLaneDivHori);
-  // const hb17LowLeftLaneDivVerti = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(6, 5, 130)),
-  // });
-  // hb17LowLeftLaneDivVerti.position.set(69.5, 0, -670.5);
-  // physicsWorld.addBody(hb17LowLeftLaneDivVerti);
+  const hb1LowLeft = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(15, 10, 39)),
+  });
+  hb1LowLeft.position.set(20, 0, -38);
+  //hb1LowLeft.quaternion.setFromEuler(0, Math.PI / 4, 0);
+  physicsWorld.addBody(hb1LowLeft);
+  const hb2LowLeft = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(45, 10, 23)),
+  });
+  hb2LowLeft.position.set(-9, 0, -94);
+  physicsWorld.addBody(hb2LowLeft);
+  const hb3LowLeft = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(10, 10, 19.5)),
+  });
+  hb3LowLeft.position.set(44, 0, 19);
+  physicsWorld.addBody(hb3LowLeft);
+  const hb4LowLeft = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(48, 10, 7)),
+  });
+  hb4LowLeft.position.set(74, 0, -10);
+  physicsWorld.addBody(hb4LowLeft);
+  const hb5LowLeft = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(26, 10, 10)),
+  });
+  hb5LowLeft.position.set(-30, 0, -50);
+  physicsWorld.addBody(hb5LowLeft);
+  const hb6LowLeft = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(15.5, 10, 28)),
+  });
+  hb6LowLeft.position.set(-18.8, 0, -23.5);
+  physicsWorld.addBody(hb6LowLeft);
+  const hb7LowLeftCorner = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(60, 10, 53)),
+  });
+  hb7LowLeftCorner.position.set(-38, 0, 61);
+  physicsWorld.addBody(hb7LowLeftCorner);
+  const hb8LeftMostSide = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(15, 10, 1357)),
+  });
+  hb8LeftMostSide.position.set(-89, 0, -1218);
+  physicsWorld.addBody(hb8LeftMostSide);
+  const hb9 = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(22, 10, 12)),
+  });
+  hb9.position.set(-49, 0, -187.5);
+  physicsWorld.addBody(hb9);
+  const hb10LeftMostSide = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(4, 10, 1227)),
+  });
+  hb10LeftMostSide.position.set(-68, 0, -1418);
+  physicsWorld.addBody(hb10LeftMostSide);
+  const hb11LowLeftTwoWayStreet = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(28, 10, 8)),
+  });
+  hb11LowLeftTwoWayStreet.position.set(-25.5, 0, -150);
+  physicsWorld.addBody(hb11LowLeftTwoWayStreet);
+  const hb12LowLeftTwoWayStreet = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(19, 10, 30)),
+  });
+  hb12LowLeftTwoWayStreet.position.set(15, 0, -169);
+  physicsWorld.addBody(hb12LowLeftTwoWayStreet);
+  const hb13LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(40, 10, 40)),
+  });
+  hb13LowLeftTwoWayStreetBuildingBlock.position.set(-3.5, 0, -258.5);
+  physicsWorld.addBody(hb13LowLeftTwoWayStreetBuildingBlock);
+  const hb14LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(41, 10, 100)),
+  });
+  hb14LowLeftTwoWayStreetBuildingBlock.position.set(-4, 0, -421);
+  physicsWorld.addBody(hb14LowLeftTwoWayStreetBuildingBlock);
+  const hb15LowLeftLaneDivVerti = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(5.5, 5, 235)),
+  });
+  hb15LowLeftLaneDivVerti.position.set(72, 0, -287);
+  physicsWorld.addBody(hb15LowLeftLaneDivVerti);
+  const hb16LowLeftLaneDivHori = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(624, 5, 4)),
+  });
+  hb16LowLeftLaneDivHori.position.set(691.5, 0, -54);
+  physicsWorld.addBody(hb16LowLeftLaneDivHori);
+  const hb17LowLeftLaneDivVerti = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(6, 5, 130)),
+  });
+  hb17LowLeftLaneDivVerti.position.set(69.5, 0, -670.5);
+  physicsWorld.addBody(hb17LowLeftLaneDivVerti);
   const hb18LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
     mass: 0,
     shape: new CANNON.Box(new CANNON.Vec3(36, 10, 226)),
@@ -230,98 +230,98 @@ function collisionBoxes() {
   });
   hb23LowLeftTwoWayStreetBuildingBlock.position.set(235, 0, -198);
   physicsWorld.addBody(hb23LowLeftTwoWayStreetBuildingBlock);
-  //Plane collision, bad thing so far
-  // const planeShape = new CANNON.Plane();
-  // const planeBody = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(42.5, 0.1, 6)),
-  //   friction: 0.1,
-  // });
-  // planeBody.position.set(-20.5, -3, -113);
-  // planeBody.quaternion.setFromEuler(0, 0, Math.PI / 30);
-  // // planeBody.addShape(planeShape);
-  // physicsWorld.addBody(planeBody);
-  // const rampPlane = new CANNON.Body({
-  //   mass: 1,
-  //   shape: new CANNON.Plane(new CANNON.Vec3(42.5, 0.1, 8)),
-  // });
-  // rampPlane.position.set(-7.5, 3, -113);
-  // rampPlane.quaternion.setFromEuler(0, 0, Math.PI / 2);
-  // physicsWorld.addBody(rampPlane);
+  // Plane collision, bad thing so far
+  const planeShape = new CANNON.Plane();
+  const planeBody = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(42.5, 0.1, 6)),
+    friction: 0.1,
+  });
+  planeBody.position.set(-20.5, -3, -113);
+  planeBody.quaternion.setFromEuler(0, 0, Math.PI / 30);
+  // planeBody.addShape(planeShape);
+  physicsWorld.addBody(planeBody);
+  const rampPlane = new CANNON.Body({
+    mass: 1,
+    shape: new CANNON.Plane(new CANNON.Vec3(42.5, 0.1, 8)),
+  });
+  rampPlane.position.set(-7.5, 3, -113);
+  rampPlane.quaternion.setFromEuler(0, 0, Math.PI / 2);
+  physicsWorld.addBody(rampPlane);
 
-  // const hb24LowLeftRamp1 = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(46.5, 0.1, 8)),
-  // });
-  // hb24LowLeftRamp1.position.set(-11, 0, -113);
-  // hb24LowLeftRamp1.quaternion.setFromEuler(0, 0, Math.PI / 30);
-  // physicsWorld.addBody(hb24LowLeftRamp1);
-  // const hb25LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(31, 10, 123)),
-  // });
-  // hb25LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -378);
-  // physicsWorld.addBody(hb25LowLeftTwoWayStreetBuildingBlock);
-  // const hb26LowLeftTwoWayStreetPavement = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(31, 10, 5.5)),
-  // });
-  // hb26LowLeftTwoWayStreetPavement.position.set(132, 0, -520);
-  // physicsWorld.addBody(hb26LowLeftTwoWayStreetPavement);
+  const hb24LowLeftRamp1 = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(46.5, 0.1, 8)),
+  });
+  hb24LowLeftRamp1.position.set(-11, 0, -113);
+  hb24LowLeftRamp1.quaternion.setFromEuler(0, 0, Math.PI / 30);
+  physicsWorld.addBody(hb24LowLeftRamp1);
+  const hb25LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(31, 10, 123)),
+  });
+  hb25LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -378);
+  physicsWorld.addBody(hb25LowLeftTwoWayStreetBuildingBlock);
+  const hb26LowLeftTwoWayStreetPavement = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(31, 10, 5.5)),
+  });
+  hb26LowLeftTwoWayStreetPavement.position.set(132, 0, -520);
+  physicsWorld.addBody(hb26LowLeftTwoWayStreetPavement);
 
-  // const hb27LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(32, 10, 63)),
-  // });
-  // hb27LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -605);
-  // physicsWorld.addBody(hb27LowLeftTwoWayStreetBuildingBlock);
-  // const hb28LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(27, 10, 65)),
-  // });
-  // hb28LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -738);
-  // physicsWorld.addBody(hb28LowLeftTwoWayStreetBuildingBlock);
+  const hb27LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(32, 10, 63)),
+  });
+  hb27LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -605);
+  physicsWorld.addBody(hb27LowLeftTwoWayStreetBuildingBlock);
+  const hb28LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(27, 10, 65)),
+  });
+  hb28LowLeftTwoWayStreetBuildingBlock.position.set(134.5, 0, -738);
+  physicsWorld.addBody(hb28LowLeftTwoWayStreetBuildingBlock);
 
-  // const hb29LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(75, 10, 79)),
-  // });
-  // hb29LowLeftTwoWayStreetBuildingBlock.position.set(181, 0, -916);
-  // physicsWorld.addBody(hb29LowLeftTwoWayStreetBuildingBlock);
+  const hb29LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(75, 10, 79)),
+  });
+  hb29LowLeftTwoWayStreetBuildingBlock.position.set(181, 0, -916);
+  physicsWorld.addBody(hb29LowLeftTwoWayStreetBuildingBlock);
 
-  // const hb30LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(71, 10, 34)),
-  // });
-  // hb30LowLeftTwoWayStreetBuildingBlock.position.set(347, 0, -878);
-  // physicsWorld.addBody(hb30LowLeftTwoWayStreetBuildingBlock);
+  const hb30LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(71, 10, 34)),
+  });
+  hb30LowLeftTwoWayStreetBuildingBlock.position.set(347, 0, -878);
+  physicsWorld.addBody(hb30LowLeftTwoWayStreetBuildingBlock);
 
-  // const hb31LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(72.5, 10, 37)),
-  // });
-  // hb31LowLeftTwoWayStreetBuildingBlock.position.set(345, 0, -966);
-  // physicsWorld.addBody(hb31LowLeftTwoWayStreetBuildingBlock);
+  const hb31LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(72.5, 10, 37)),
+  });
+  hb31LowLeftTwoWayStreetBuildingBlock.position.set(345, 0, -966);
+  physicsWorld.addBody(hb31LowLeftTwoWayStreetBuildingBlock);
 
-  // const hb32LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(33, 10, 33)),
-  // });
-  // hb32LowLeftTwoWayStreetBuildingBlock.position.set(385, 0, -1054);
-  // physicsWorld.addBody(hb32LowLeftTwoWayStreetBuildingBlock);
-  // const hb33LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(33, 10, 33)),
-  // });
-  // hb33LowLeftTwoWayStreetBuildingBlock.position.set(305, 0, -1054);
-  // physicsWorld.addBody(hb33LowLeftTwoWayStreetBuildingBlock);
+  const hb32LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(33, 10, 33)),
+  });
+  hb32LowLeftTwoWayStreetBuildingBlock.position.set(385, 0, -1054);
+  physicsWorld.addBody(hb32LowLeftTwoWayStreetBuildingBlock);
+  const hb33LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(33, 10, 33)),
+  });
+  hb33LowLeftTwoWayStreetBuildingBlock.position.set(305, 0, -1054);
+  physicsWorld.addBody(hb33LowLeftTwoWayStreetBuildingBlock);
 
-  // const hb34LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-  //   mass: 0,
-  //   shape: new CANNON.Box(new CANNON.Vec3(75, 10, 38)),
-  // });
-  // hb34LowLeftTwoWayStreetBuildingBlock.position.set(182, 0, -1054);
-  // physicsWorld.addBody(hb34LowLeftTwoWayStreetBuildingBlock);
+  const hb34LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(75, 10, 38)),
+  });
+  hb34LowLeftTwoWayStreetBuildingBlock.position.set(182, 0, -1054);
+  physicsWorld.addBody(hb34LowLeftTwoWayStreetBuildingBlock);
 
   const hb35LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
     mass: 0,
@@ -336,6 +336,97 @@ function collisionBoxes() {
   });
   hb36LowLeftTwoWayStreetBuildingBlock.position.set(415, 0, -1160);
   physicsWorld.addBody(hb36LowLeftTwoWayStreetBuildingBlock);
+
+  const hb37MidLeftTwoWayStreetBuildingBlockExtension = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(11, 10, 26)),
+  });
+  hb37MidLeftTwoWayStreetBuildingBlockExtension.position.set(372, 0, -1226);
+  physicsWorld.addBody(hb37MidLeftTwoWayStreetBuildingBlockExtension);
+
+  const hb38LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(30, 10, 30)),
+  });
+  hb38LowLeftTwoWayStreetBuildingBlock.position.set(514, 0, -1159);
+  physicsWorld.addBody(hb38LowLeftTwoWayStreetBuildingBlock);
+
+  const hb39MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(29, 10, 53)),
+  });
+  hb39MidLeftTwoWayStreetBuildingBlock.position.set(516, 0, -1266);
+  physicsWorld.addBody(hb39MidLeftTwoWayStreetBuildingBlock);
+
+  const hb40MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(29, 10, 57)),
+  });
+  hb40MidLeftTwoWayStreetBuildingBlock.position.set(435, 0, -1264);
+  physicsWorld.addBody(hb40MidLeftTwoWayStreetBuildingBlock);
+
+  const hb41MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(46, 10, 24)),
+  });
+  hb41MidLeftTwoWayStreetBuildingBlock.position.set(338, 0, -1298);
+  physicsWorld.addBody(hb41MidLeftTwoWayStreetBuildingBlock);
+
+  const hb42LowLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(117, 10, 28)),
+  });
+  hb42LowLeftTwoWayStreetBuildingBlock.position.set(704, 0, -1159);
+  physicsWorld.addBody(hb42LowLeftTwoWayStreetBuildingBlock);
+
+  const hb43MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(16, 10, 58)),
+  });
+  hb43MidLeftTwoWayStreetBuildingBlock.position.set(598, 0, -1266);
+  physicsWorld.addBody(hb43MidLeftTwoWayStreetBuildingBlock);
+
+  const hb44MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(17, 10, 32)),
+  });
+  hb44MidLeftTwoWayStreetBuildingBlock.position.set(653, 0, -1245);
+  physicsWorld.addBody(hb44MidLeftTwoWayStreetBuildingBlock);
+
+  const hb45MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(28, 10, 30)),
+  });
+  hb45MidLeftTwoWayStreetBuildingBlock.position.set(704, 0, -1241);
+  physicsWorld.addBody(hb45MidLeftTwoWayStreetBuildingBlock);
+
+  const hb46MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(17, 10, 34)),
+  });
+  hb46MidLeftTwoWayStreetBuildingBlock.position.set(760, 0, -1240);
+  physicsWorld.addBody(hb46MidLeftTwoWayStreetBuildingBlock);
+
+  const hb47MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(12, 10, 56)),
+  });
+  hb47MidLeftTwoWayStreetBuildingBlock.position.set(812, 0, -1261);
+  physicsWorld.addBody(hb47MidLeftTwoWayStreetBuildingBlock);
+
+  const hb48MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(60.5, 10, 31.5)),
+  });
+  hb48MidLeftTwoWayStreetBuildingBlock.position.set(905, 0, -1292.5);
+  physicsWorld.addBody(hb48MidLeftTwoWayStreetBuildingBlock);
+
+  const hb49MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Box(new CANNON.Vec3(58, 10, 48)),
+  });
+  hb49MidLeftTwoWayStreetBuildingBlock.position.set(907, 0, -1189);
+  physicsWorld.addBody(hb49MidLeftTwoWayStreetBuildingBlock);
 }
 
 collisionBoxes();
