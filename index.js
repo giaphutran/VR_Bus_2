@@ -421,42 +421,65 @@ function collisionBoxes() {
   // hb48MidLeftTwoWayStreetBuildingBlock.position.set(905, 0, -1292.5);
   // physicsWorld.addBody(hb48MidLeftTwoWayStreetBuildingBlock);
 
-  const hb49MidMidTwoWayStreetBuildingBlock = new CANNON.Body({
+  // const hb49MidMidTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(58, 10, 48)),
+  // });
+  // hb49MidMidTwoWayStreetBuildingBlock.position.set(907, 0, -1189);
+  // physicsWorld.addBody(hb49MidMidTwoWayStreetBuildingBlock);
+
+  // const hb50MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(70, 10, 23.5)),
+  // });
+  // hb50MidLeftTwoWayStreetBuildingBlock.position.set(711, 0, -1297.5);
+  // physicsWorld.addBody(hb50MidLeftTwoWayStreetBuildingBlock);
+
+
+  // const hb51LeftMidTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(219.5, 10, 28)),
+  // });
+  // hb51LeftMidTwoWayStreetBuildingBlock.position.set(323.5, 0, -1373);
+  // physicsWorld.addBody(hb51LeftMidTwoWayStreetBuildingBlock);
+
+  // const hb52LeftMidTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(190, 10, 31)),
+  // });
+  // hb52LeftMidTwoWayStreetBuildingBlock.position.set(773, 0, -1371);
+  // physicsWorld.addBody(hb52LeftMidTwoWayStreetBuildingBlock);
+
+  // const hb53MidMidTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(42, 10, 95)),
+  // });
+  // hb53MidMidTwoWayStreetBuildingBlock.position.set(1050, 0, -1224);
+  // physicsWorld.addBody(hb53MidMidTwoWayStreetBuildingBlock);
+
+  // const hb54MidMidTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(164, 10, 25)),
+  // });
+  // hb54MidMidTwoWayStreetBuildingBlock.position.set(1171, 0, -1369);
+  // physicsWorld.addBody(hb54MidMidTwoWayStreetBuildingBlock);
+
+  // const hb55MidMidTwoWayStreetBuildingBlock = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(111, 10, 35)),
+  // });
+  
+  const hb56MidMidTwoWayStreetRampDown = new CANNON.Body({
     mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(58, 10, 48)),
+    shape: new CANNON.Box(new CANNON.Vec3(15.5, 0.01, 39)),
   });
-  hb49MidMidTwoWayStreetBuildingBlock.position.set(907, 0, -1189);
-  physicsWorld.addBody(hb49MidMidTwoWayStreetBuildingBlock);
+  hb56MidMidTwoWayStreetRampDown.position.set(1355.5, -8, -1520);
+  hb56MidMidTwoWayStreetRampDown.quaternion.setFromEuler(-Math.PI/25, 0, 0);
 
-  const hb50MidLeftTwoWayStreetBuildingBlock = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(70, 10, 23.5)),
-  });
-  hb50MidLeftTwoWayStreetBuildingBlock.position.set(711, 0, -1297.5);
-  physicsWorld.addBody(hb50MidLeftTwoWayStreetBuildingBlock);
+  physicsWorld.addBody(hb56MidMidTwoWayStreetRampDown);
 
 
-  const hb51LeftMidTwoWayStreetBuildingBlock = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(219.5, 10, 28)),
-  });
-  hb51LeftMidTwoWayStreetBuildingBlock.position.set(323.5, 0, -1373);
-  physicsWorld.addBody(hb51LeftMidTwoWayStreetBuildingBlock);
-
-  const hb52LeftMidTwoWayStreetBuildingBlock = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(187, 10, 25)),
-  });
-  hb52LeftMidTwoWayStreetBuildingBlock.position.set(770, 0, -1373);
-  physicsWorld.addBody(hb52LeftMidTwoWayStreetBuildingBlock);
-
-  const hb53MidMidTwoWayStreetBuildingBlock = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(42, 10, 95)),
-  });
-  hb53MidMidTwoWayStreetBuildingBlock.position.set(1050, 0, -1224);
-  physicsWorld.addBody(hb53MidMidTwoWayStreetBuildingBlock);
-
+  
 }
 
 collisionBoxes();
@@ -606,6 +629,11 @@ document.addEventListener("keydown", (event) => {
       vehicle.chassisBody.angularVelocity.set(0, 0, 0);
 
       break;
+    case "e":
+      vehicle.chassisBody.position.set(1300,0,-1300);
+      vehicle.chassisBody.velocity.set(0, 0, 0);
+      vehicle.chassisBody.angularVelocity.set(0, 0, 0);
+
   }
 });
 // Reset force on keyup
@@ -730,7 +758,7 @@ function animate() {
     // );
     camera.position.set(
       vehicle.chassisBody.position.x,
-      80,
+      15,
       vehicle.chassisBody.position.z
     );
     camera.lookAt(
