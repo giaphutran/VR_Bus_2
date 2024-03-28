@@ -469,14 +469,58 @@ function collisionBoxes() {
   //   shape: new CANNON.Box(new CANNON.Vec3(111, 10, 35)),
   // });
   
-  const hb56MidMidTwoWayStreetRampDown = new CANNON.Body({
-    mass: 0,
-    shape: new CANNON.Box(new CANNON.Vec3(15.5, 0.01, 39)),
-  });
-  hb56MidMidTwoWayStreetRampDown.position.set(1355.5, -8, -1520);
-  hb56MidMidTwoWayStreetRampDown.quaternion.setFromEuler(-Math.PI/25, 0, 0);
+  // const hb56MidMidTwoWayStreetRampDown = new CANNON.Body({
+  //   mass: 0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(15.5, 0.1, 39)),
+  // });
+  // hb56MidMidTwoWayStreetRampDown.position.set(1355.5, -8, -1520);
+  // hb56MidMidTwoWayStreetRampDown.quaternion.setFromEuler(-Math.PI/25, 0, 0);
 
-  physicsWorld.addBody(hb56MidMidTwoWayStreetRampDown);
+  // physicsWorld.addBody(hb56MidMidTwoWayStreetRampDown);
+
+  const hbR1MidMidTwoWayStreetRampUp = new CANNON.Body({
+    mass: 0,
+    
+    friction:100,
+    shape: new CANNON.Box(new CANNON.Vec3(29, 0.1, 39)),
+  });
+  hbR1MidMidTwoWayStreetRampUp.position.set(565, 0, -1520);
+  hbR1MidMidTwoWayStreetRampUp.quaternion.setFromEuler(Math.PI/25, 0, 0);
+
+  physicsWorld.addBody(hbR1MidMidTwoWayStreetRampUp);
+
+  const hbR2MidMidTwoWayStreetRampFlat = new CANNON.Body({
+    mass: 0,
+    
+    friction:100,
+    shape: new CANNON.Box(new CANNON.Vec3(29, 0.01, 29.5)),
+  });
+  hbR2MidMidTwoWayStreetRampFlat.position.set(565, 5, -1588.5);
+
+  physicsWorld.addBody(hbR2MidMidTwoWayStreetRampFlat);
+
+  // const hbR3MidMidTwoWayStreetRampDown = new CANNON.Body({
+  //   mass: 0,
+  //   friction:0,
+  //   shape: new CANNON.Box(new CANNON.Vec3(35, 0.01, 41)),
+  // });
+  // hbR3MidMidTwoWayStreetRampDown.position.set(565, 1, -1658.);
+  // hbR3MidMidTwoWayStreetRampDown.quaternion.setFromEuler(-Math.PI/30, 0, 0);
+
+  // physicsWorld.addBody(hbR3MidMidTwoWayStreetRampDown);
+
+  const hbR3MidMidTwoWayStreetRampUp = new CANNON.Body({
+    mass: 0,
+    
+    friction:10,
+    shape: new CANNON.Plane(new CANNON.Vec3(69, 0.01, 39)),
+  });
+  hbR3MidMidTwoWayStreetRampUp.position.set(565, -1, -1659);
+  hbR3MidMidTwoWayStreetRampUp.quaternion.setFromEuler(-Math.PI/25, 0, 0);
+
+  physicsWorld.addBody(hbR3MidMidTwoWayStreetRampUp);
+
+
 
 
   
@@ -630,7 +674,7 @@ document.addEventListener("keydown", (event) => {
 
       break;
     case "e":
-      vehicle.chassisBody.position.set(1300,0,-1300);
+      vehicle.chassisBody.position.set(550,0,-1300);
       vehicle.chassisBody.velocity.set(0, 0, 0);
       vehicle.chassisBody.angularVelocity.set(0, 0, 0);
 
@@ -758,7 +802,7 @@ function animate() {
     // );
     camera.position.set(
       vehicle.chassisBody.position.x,
-      15,
+      80,
       vehicle.chassisBody.position.z
     );
     camera.lookAt(
