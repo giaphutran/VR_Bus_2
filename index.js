@@ -14,6 +14,12 @@ var busModel, cityMap, construction1, construction2;
 var hud, song;
 var muted = false;
 var isFirstPerson = true;
+var currentTrack = 0;
+
+const playlist = [
+  'woke-up-this-morning.mp3',
+  'dont-stop-believing.mp3',
+];
 
 function init() {
     // Set up the window;
@@ -54,12 +60,8 @@ function init() {
     // UI
     uiElements();
 
-    song = new Howl({
-        src: ['woke-up-this-morning.mp3', 'dont-stop-believing.mp3'],
-        loop: true,
-    });
-    song.play();
-  
+    // BGM
+    playSong(currentTrack);
 }
 init();
 
@@ -667,7 +669,7 @@ function uiElements() {
 		content: "0"
 	} );
     const text3 = new ThreeMeshUI.Text( {
-		content: '\nPress B to Switch to 3rd Person View\nPress A to Mute BGM',
+		content: '\nPress B to Switch to 3rd Person View\nPress A to Mute Sound',
         fontSize: 0.02,
 	} );
 	hud.add( text, minute, text2, second, text3 );
@@ -687,25 +689,17 @@ function uiUpdate() {
     hud.rotation.y = angle.y;
 }
 
-// //background music
-// const playlist = [
-//   'woke-up-this-morning.mp3',
-//   'dont-stop-believing.mp3',
-// ];
-// // Function to play the current song
-// const playSong = (index) => {
-//   const song = new Howl({
-//     src: [playlist[index]],
-//     onend: () => {
-//       // Play the next song when the current one ends
-//       currentTrack = (currentTrack + 1) % playlist.length;
-//       playSong(currentTrack);
-//     }
-//   });
-
-//   song.play();
-// };
-// playSong(currentTrack);
+function playSong(index) {
+    song = new Howl({
+        src: [playlist[index]],
+        onend: function() {
+            // Play the next song when the current one ends
+            currentTrack = (currentTrack + 1) % playlist.length;
+            playSong(currentTrack);
+        }
+    });
+    song.play();
+}
 
 // Define interactions between wheels and ground
 const wheel_ground = new CANNON.ContactMaterial(wheelMaterial, groundMaterial, {
@@ -876,16 +870,16 @@ function controllerInput() {
                 firstPressedTime = currentTime;
             }
         }
-        // Mute/Unmute Song
+        // Mute/Unmute Sound
         if (rightControllerIndex.buttons[4].pressed) {
             if (currentTime - firstPressedTime > 500) {
                 if (!muted) {
                     muted = true;
-                    song.mute(true);
+                    Howler.mute(true);
                 }
                 else {
                     muted = false;
-                    song.mute(false);
+                    Howler.mute(false);
                 }
                 firstPressedTime = currentTime;
             }
