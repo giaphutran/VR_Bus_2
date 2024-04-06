@@ -748,7 +748,8 @@ physicsWorld.addEventListener("beginContact", (event) => {
 document.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "w":
-      //code for climbing incline plane, didn't work
+    case "W":
+    //code for climbing incline plane, didn't work
       // const inclineFactor = Math.sin(currentInclineAngle);
       // const adjustedForce = maxForce + inclineFactor * 10;
       const inclineForceModifier = Math.sin(currentInclineAngle);
@@ -759,21 +760,26 @@ document.addEventListener("keydown", (event) => {
       break;
 
     case "s":
+    case "S":
       vehicle.setWheelForce(-maxForce / 2, 2);
       vehicle.setWheelForce(maxForce / 2, 3);
       break;
 
     case "a":
+    case "A":
       vehicle.setSteeringValue(maxSteerVal, 0);
       vehicle.setSteeringValue(maxSteerVal, 1);
       break;
 
     case "d":
+    case "D":
       vehicle.setSteeringValue(-maxSteerVal, 0);
       vehicle.setSteeringValue(-maxSteerVal, 1);
       break;
 
     case "c":
+    case "C":
+      //reset the vehicle if flipped
       vehicle.chassisBody.quaternion.setFromAxisAngle(
         new CANNON.Vec3(0, 1, 0),
         0
@@ -782,12 +788,15 @@ document.addEventListener("keydown", (event) => {
       vehicle.chassisBody.angularVelocity.set(0, 0, 0);
 
       break;
-    case "e":
-      vehicle.chassisBody.position.set(550,0,-1300);
-      vehicle.chassisBody.velocity.set(0, 0, 0);
-      vehicle.chassisBody.angularVelocity.set(0, 0, 0);
-      break;
+    // case "e":
+    // case "E":
+    //   //teleport the vehicle to a position, used for debugging only
+    //   vehicle.chassisBody.position.set(550,0,-1300);
+    //   vehicle.chassisBody.velocity.set(0, 0, 0);
+    //   vehicle.chassisBody.angularVelocity.set(0, 0, 0);
+      // break;
     case "v":
+    case "V":
       
         
             if (isFirstPerson) 
@@ -798,6 +807,7 @@ document.addEventListener("keydown", (event) => {
     break;
 
     case "f":
+    case "F":
       if(!muted)
           muted=true;
         else
@@ -811,21 +821,25 @@ document.addEventListener("keydown", (event) => {
 document.addEventListener("keyup", (event) => {
   switch (event.key) {
     case "w":
+    case "W":
       vehicle.setWheelForce(0, 2);
       vehicle.setWheelForce(0, 3);
       break;
 
     case "s":
+    case "S":
       vehicle.setWheelForce(0, 2);
       vehicle.setWheelForce(0, 3);
       break;
 
     case "a":
+    case "A":
       vehicle.setSteeringValue(0, 0);
       vehicle.setSteeringValue(0, 1);
       break;
 
     case "d":
+    case "D":
       vehicle.setSteeringValue(0, 0);
       vehicle.setSteeringValue(0, 1);
       break;
@@ -896,14 +910,6 @@ function controllerInput() {
         // Mute/Unmute Sound
         if (rightControllerIndex.buttons[4].pressed) {
             if (currentTime - firstPressedTime > 500) {
-                // if (!muted) {
-                //     muted = true;
-                //     Howler.mute(true);
-                // }
-                // else {
-                //     muted = false;
-                //     Howler.mute(false);
-                // }
                 if (!muted)
                   muted=true;
                 else
