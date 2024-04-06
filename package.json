@@ -14,6 +14,8 @@
   "dependencies": {
     "cannon-es": "^0.20.0",
     "cannon-es-debugger": "^1.0.0",
-    "three": "^0.161.0"
+    "howler": "^2.2.4",
+    "three": "^0.161.0",
+    "three-mesh-ui": "^6.5.4"
   }
 }
