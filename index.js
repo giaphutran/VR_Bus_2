@@ -23,6 +23,7 @@ const playlist = [
   'push-it-to-the-limit.mp3',
   'connie-wedding.mp3',
   'little-girl-of-mine',
+  'dust-my-broom',
 ];
 
 function init() {
