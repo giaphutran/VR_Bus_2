@@ -795,7 +795,15 @@ document.addEventListener("keydown", (event) => {
             else
                 isFirstPerson = true;
             firstPressedTime = currentTime;
-        
+    break;
+
+    case "f":
+      if(!muted)
+          muted=true;
+        else
+          muted=false;
+        Howler.mute(muted);
+        break;
 
   }
 });
@@ -888,14 +896,20 @@ function controllerInput() {
         // Mute/Unmute Sound
         if (rightControllerIndex.buttons[4].pressed) {
             if (currentTime - firstPressedTime > 500) {
-                if (!muted) {
-                    muted = true;
-                    Howler.mute(true);
-                }
-                else {
-                    muted = false;
-                    Howler.mute(false);
-                }
+                // if (!muted) {
+                //     muted = true;
+                //     Howler.mute(true);
+                // }
+                // else {
+                //     muted = false;
+                //     Howler.mute(false);
+                // }
+                if (!muted)
+                  muted=true;
+                else
+                  muted=false;
+                Howler.mute(muted);
+
                 firstPressedTime = currentTime;
             }
         }
