@@ -11,7 +11,7 @@ import FontImage from 'three-mesh-ui/examples/assets/Roboto-msdf.png';
 var scene, camera, renderer, ambientLight, directionalLight, camobj, clock;
 var physicsWorld, groundMaterial, vehicle, wheelMaterial, angle;
 var busModel, cityMap, construction1, construction2;
-var hud, song;
+var hud, startScreen, song;
 var muted = false;
 var isFirstPerson = true;
 var currentTrack = 0;
@@ -46,16 +46,16 @@ function init() {
     directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(0, 1, 0);
     scene.add(directionalLight);
-
-    // 3D Model
-    modelLoader();
     
-    // Collision
+    // Physics
     physicsWorld = new CANNON.World({
         gravity: new CANNON.Vec3(0, -9.82, 0),
     });
     mapCollision(); 
     busCollision();
+
+    // 3D Model
+    modelLoader();
 
     // UI
     uiElements();
@@ -689,6 +689,32 @@ function uiUpdate() {
     hud.rotation.y = angle.y;
 }
 
+function cameraUpdate() {
+    if (renderer.xr.isPresenting) {
+        if (isFirstPerson) {
+            camobj.position.x = vehicle.chassisBody.position.x - 4.8 * Math.sin(angle.y) - 0.8 * Math.cos(angle.y);
+            camobj.position.y = 0.5;
+            camobj.position.z = vehicle.chassisBody.position.z - 4.8 * Math.cos(angle.y) + 0.8 * Math.sin(angle.y);
+            camobj.rotation.y = angle.y;
+        }
+        else {
+            camobj.position.x = vehicle.chassisBody.position.x + 20 * Math.sin(angle.y);
+            camobj.position.y = 20;
+            camobj.position.z = vehicle.chassisBody.position.z + 20 * Math.cos(angle.y);
+            camobj.rotation.y = angle.y;
+            camera.lookAt(vehicle.chassisBody.position.x, 0, vehicle.chassisBody.position.z);
+        }
+    }
+    else {
+        camobj.position.x = vehicle.chassisBody.position.x + 20 * Math.sin(angle.y);
+        camobj.position.y = 20;
+        camobj.position.z = vehicle.chassisBody.position.z + 20 * Math.cos(angle.y);
+        camobj.rotation.y = angle.y;
+        camera.lookAt(vehicle.chassisBody.position.x, 0, vehicle.chassisBody.position.z);
+    }
+
+}
+
 function playSong(index) {
     song = new Howl({
         src: [playlist[index]],
@@ -709,7 +735,7 @@ const wheel_ground = new CANNON.ContactMaterial(wheelMaterial, groundMaterial, {
 });
 physicsWorld.addContactMaterial(wheel_ground);
 const maxSpeed = 40;
-const maxForce = 220;
+const maxForce = 100;
 const maxSteerVal = Math.PI / 8;
 
 let currentInclineAngle = 0;
@@ -767,21 +793,6 @@ document.addEventListener("keydown", (event) => {
       vehicle.setSteeringValue(-maxSteerVal, 0);
       vehicle.setSteeringValue(-maxSteerVal, 1);
       break;
-
-    case "c":
-      vehicle.chassisBody.quaternion.setFromAxisAngle(
-        new CANNON.Vec3(0, 1, 0),
-        0
-      );
-      vehicle.chassisBody.velocity.set(0, 0, 0);
-      vehicle.chassisBody.angularVelocity.set(0, 0, 0);
-
-      break;
-    case "e":
-      vehicle.chassisBody.position.set(550,0,-1300);
-      vehicle.chassisBody.velocity.set(0, 0, 0);
-      vehicle.chassisBody.angularVelocity.set(0, 0, 0);
-
   }
 });
 // Reset force on keyup
@@ -830,7 +841,7 @@ let firstPressedTime = 0;
 function controllerInput() {
     const currentTime = Date.now();
     if (leftControllerIndex !== null) {
-        // Accelerate/Decelerate
+        // Left Joystick: Accelerate/Decelerate
         if (leftControllerIndex.axes[3] < 0) {
             vehicle.setWheelForce(maxForce, 2);
             vehicle.setWheelForce(-maxForce, 3);
@@ -842,14 +853,10 @@ function controllerInput() {
             vehicle.setWheelForce(0, 3);
         }
 
-        // if (leftControllerIndex.buttons[0].pressed) {
-        //     vehicle.setWheelForce(-maxForce / 2, 2);
-        //     vehicle.setWheelForce(maxForce / 2, 3);
-        // }
     }
 
     if (rightControllerIndex !== null) {
-        // Steer
+        // Right Joystick: Steer
         if (rightControllerIndex.axes[2] < -0.3) {
             vehicle.setSteeringValue(maxSteerVal, 0);
             vehicle.setSteeringValue(maxSteerVal, 1);
@@ -860,7 +867,7 @@ function controllerInput() {
             vehicle.setSteeringValue(0, 0);
             vehicle.setSteeringValue(0, 1);
         }
-        // Switch between perspectives
+        // B Button: Switch between perspectives
         if (rightControllerIndex.buttons[5].pressed) {
             if (currentTime - firstPressedTime > 500) {
                 if (isFirstPerson) 
@@ -870,7 +877,7 @@ function controllerInput() {
                 firstPressedTime = currentTime;
             }
         }
-        // Mute/Unmute Sound
+        // A Button: Mute/Unmute Sound
         if (rightControllerIndex.buttons[4].pressed) {
             if (currentTime - firstPressedTime > 500) {
                 if (!muted) {
@@ -920,32 +927,20 @@ function animate() {
   renderer.setAnimationLoop(() => {
     physicsWorld.fixedStep();
     ThreeMeshUI.update();
-    cannonDebugger.update();
+    //cannonDebugger.update();
     vehicle.chassisBody.quaternion.toEuler(angle);
     if (busModel) {
-      // Update the bus's position and rotation
-      busModel.position.copy(vehicle.chassisBody.position);
-      busModel.quaternion.copy(vehicle.chassisBody.quaternion);
+        // Update the bus's position and rotation
+        busModel.position.copy(vehicle.chassisBody.position);
+        busModel.quaternion.copy(vehicle.chassisBody.quaternion);
 
-      const correctionQuaternion = new THREE.Quaternion().setFromAxisAngle(
+        const correctionQuaternion = new THREE.Quaternion().setFromAxisAngle(
         new THREE.Vector3(0, 1, 0),
         -Math.PI / 2
-      ); //-90 degrees around y axis
-      busModel.quaternion.multiply(correctionQuaternion);
+        ); //-90 degrees around y axis
+        busModel.quaternion.multiply(correctionQuaternion);
     }
-    if (isFirstPerson) {
-        camobj.position.x = vehicle.chassisBody.position.x - 4.8 * Math.sin(angle.y) - 0.8 * Math.cos(angle.y);
-        camobj.position.y = 0.5;
-        camobj.position.z = vehicle.chassisBody.position.z - 4.8 * Math.cos(angle.y) + 0.8 * Math.sin(angle.y);
-        camobj.rotation.y = angle.y;
-    }
-    else {
-        camobj.position.x = vehicle.chassisBody.position.x + 20 * Math.sin(angle.y);
-        camobj.position.y = 20;
-        camobj.position.z = vehicle.chassisBody.position.z + 20 * Math.cos(angle.y);
-        camobj.rotation.y = angle.y;
-        camera.lookAt(vehicle.chassisBody.position.x, 0, vehicle.chassisBody.position.z);
-    }
+    cameraUpdate();
     uiUpdate();
     controllerInput();
     renderer.render(scene, camera);
