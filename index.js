@@ -100,7 +100,7 @@ function modelLoader() {
         }
     });
 
-    //construction sign
+    //construction signs
     const constructionLoader1 = new GLTFLoader();
     constructionLoader1.load("construction-sign-face-south.glb", function (gltf) {
         construction1 = gltf.scene;
@@ -673,7 +673,7 @@ function uiElements() {
 		content: "0"
 	} );
     const text3 = new ThreeMeshUI.Text( {
-		content: '\nPress B to Switch to 3rd Person View\nPress A to Mute Sound',
+		content: '\nPress B to Switch to 3rd Person View\nPress A to Mute Sound\nPress X to reset the bus if you flipped it',
         fontSize: 0.02,
 	} );
 	hud.add( text, minute, text2, second, text3 );
@@ -691,6 +691,15 @@ function uiUpdate() {
     hud.position.z = camobj.position.z - 0.6 * Math.cos(angle.y) - 0.7 * Math.sin(angle.y);
     hud.rotation.x = 0;
     hud.rotation.y = angle.y;
+}
+
+function updateHUDTimer() {
+  const elapsed = Math.floor(clock.getElapsedTime());
+  const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
+  const seconds = (elapsed % 60).toString().padStart(2, '0');
+  
+  document.getElementById('minutes').textContent = minutes;
+  document.getElementById('seconds').textContent = seconds;
 }
 
 function cameraUpdate() {
@@ -738,8 +747,7 @@ const wheel_ground = new CANNON.ContactMaterial(wheelMaterial, groundMaterial, {
   contactEquationStiffness: 1000,
 });
 physicsWorld.addContactMaterial(wheel_ground);
-const maxSpeed = 40;
-const maxForce = 80;
+const maxForce = 90;
 const maxSteerVal = Math.PI / 8;
 
 let currentInclineAngle = 0;
@@ -813,23 +821,22 @@ document.addEventListener("keydown", (event) => {
       vehicle.chassisBody.angularVelocity.set(0, 0, 0);
 
       break;
+    // Use For Debugging only
     // case "e":
     // case "E":
     //   //teleport the vehicle to a position, used for debugging only
     //   vehicle.chassisBody.position.set(550,0,-1300);
     //   vehicle.chassisBody.velocity.set(0, 0, 0);
     //   vehicle.chassisBody.angularVelocity.set(0, 0, 0);
-      // break;
+    //   break;
     case "v":
-    case "V":
-      
-        
-            if (isFirstPerson) 
-                isFirstPerson = false;
-            else
-                isFirstPerson = true;
-            firstPressedTime = currentTime;
-    break;
+    case "V": 
+      if (isFirstPerson) 
+          isFirstPerson = false;
+      else
+          isFirstPerson = true;
+      firstPressedTime = currentTime;
+      break;
 
     case "f":
     case "F":
@@ -839,7 +846,6 @@ document.addEventListener("keydown", (event) => {
           muted=false;
         Howler.mute(muted);
         break;
-
   }
 });
 // Reset force on keyup
@@ -903,7 +909,15 @@ function controllerInput() {
             vehicle.setWheelForce(0, 2);
             vehicle.setWheelForce(0, 3);
         }
-
+        if (leftControllerIndex.buttons[4].pressed) {
+          // X Button: Reset the vehicle if flipped
+          vehicle.chassisBody.quaternion.setFromAxisAngle(
+            new CANNON.Vec3(0, 1, 0),
+            0
+          );
+          vehicle.chassisBody.velocity.set(0, 0, 0);
+          vehicle.chassisBody.angularVelocity.set(0, 0, 0);
+        }
     }
 
     if (rightControllerIndex !== null) {
@@ -969,6 +983,7 @@ physicsWorld.addEventListener("beginContact", (event) => {
   }
 });
 
+// For Debugging the Collision
 const cannonDebugger = new CannonDebugger(scene, physicsWorld, {});
 
 // Animation loop
@@ -976,6 +991,7 @@ function animate() {
   renderer.setAnimationLoop(() => {
     physicsWorld.fixedStep();
     ThreeMeshUI.update();
+    // For Debugging the Collision
     //cannonDebugger.update();
     vehicle.chassisBody.quaternion.toEuler(angle);
     if (busModel) {
@@ -990,6 +1006,7 @@ function animate() {
         busModel.quaternion.multiply(correctionQuaternion);
     }
     cameraUpdate();
+    updateHUDTimer();
     uiUpdate();
     controllerInput();
     renderer.render(scene, camera);
