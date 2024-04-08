@@ -678,7 +678,7 @@ function uiElements() {
         fontSize: 0.02,
 	} );
 	hud.add( text, minute, text2, second, text3 );
-
+  
 	// triggers updates to the component to test onAfterUpdate
 	setInterval( () => {
 		minute.set( { content: String(Math.trunc(clock.getElapsedTime()/60)).padStart(2,'0') } );
