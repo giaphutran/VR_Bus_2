@@ -1,10 +1,10 @@
-import * as THREE from "https://unpkg.com/browse/three@0.163.0/build/three.module.js";
-import * as CANNON from "https://cdn.skypack.dev/cannon-es";
-import CannonDebugger from "https://cdn.jsdelivr.net/npm/cannon-es-debugger@1.0.0/+esm";
-import { GLTFLoader } from "https://unpkg.com/browse/three@0.163.0/examples/jsm/loaders/GLTFLoader.js";
-import { VRButton } from "https://unpkg.com/browse/three@0.163.0/examples/jsm/webxr/VRButton.js";
-import { Howl, Howler } from 'https://cdn.skypack.dev/howler';
-import ThreeMeshUI from "https://cdn.skypack.dev/three-mesh-ui";
+import * as THREE from "three";
+import * as CANNON from "cannon-es";
+import CannonDebugger from "cannon-es-debugger";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { VRButton } from "three/addons/webxr/VRButton";
+import { Howl, Howler } from 'howler';
+import ThreeMeshUI from "three-mesh-ui";
 import FontJSON from 'three-mesh-ui/examples/assets/Roboto-msdf.json';
 import FontImage from 'three-mesh-ui/examples/assets/Roboto-msdf.png';
 
@@ -678,7 +678,7 @@ function uiElements() {
         fontSize: 0.02,
 	} );
 	hud.add( text, minute, text2, second, text3 );
-
+  
 	// triggers updates to the component to test onAfterUpdate
 	setInterval( () => {
 		minute.set( { content: String(Math.trunc(clock.getElapsedTime()/60)).padStart(2,'0') } );
