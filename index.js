@@ -15,11 +15,30 @@ var hud, startScreen, song;
 var muted = false;
 var isFirstPerson = true;
 var currentTrack = 0;
+//ChatGPT 4 is used for several parts of this project for inspirational and educational purposes
+//before entering the prompts, I made sure I show chatGPT my whole code first, with some description 
+//so it has information about what I am up to
+//Initial prompt:
+//act as a senior software engineer 25 years experience. 
+//im building vr bus simulator. 
+//i will ask you question about cannon js, threejs and more related the webbased vr. 
+//you will answer concisely, with code, easy to understand
+//[insert full code]
 
 
+//This code section is inspired by chatGPT 4 
+//By inspired, we mean the inspiration, and the suggestion of idea was provided by chatGPT, and we tuned it to our liking after
+//All the prompts are executed one by one, in ascending order
+//Prompt 1: now i want to add background music for my game. what should I do, show code
+//Prompt 2: What if I want to have a playlist of songs that play in the background
 const playlist = [
   //These 3 songs below are non copy righted music
-  'song1.mp3',
+  /*Music from #InAudio: https://inaudio.org/ 
+  Track Name:
+Upbeat Funk Podcast by Infraction [No Copyright Music] / Funk Town
+Upbeat Funk Fashion by Infraction [No Copyright Music] / Holiday Party
+Upbeat Funk Background by Infraction [No Copyright Music] / Step Club */
+  'song1.mp3',  
   'song2.mp3',
   'song3.mp3',
   //Copy-righted music, we are not going to use these songs
@@ -743,6 +762,11 @@ function cameraUpdate() {
 
 }
 
+//This code section is inspired by chatGPT 4
+//All the prompts are executed one by one, in ascending order
+//Prompt 1: now i want to add background music for my game. what should I do, show code
+//Prompt 2: What if I want to have a playlist of songs that play in the background
+
 function playSong(index) {
     song = new Howl({
         src: [playlist[index]],
@@ -973,6 +997,13 @@ function controllerInput() {
 }
 
 //Collision sound
+//This code section is inspired by chatGPT 4, there are adjustments integrated to match desired experience
+//Prompt 1:this is my current code. Now i need to detect when the bus collide with any of the collision box. And when they collide, I want to play a sound. What should I do, show code
+//Prompt 2: 
+//I already get it to work. now this is my code. I want to do if the vehicle collide  in the collision box more than 3 times within 2 seconds then play a different sound. show code
+
+ChatGPT
+
 let collisionCounter = 0;
 let firstCollisionTime = 0;
 //These sounds are from freesound.org and there is absolutely no copyright infringement
