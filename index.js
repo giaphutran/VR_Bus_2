@@ -1002,7 +1002,6 @@ function controllerInput() {
 //Prompt 2: 
 //I already get it to work. now this is my code. I want to do if the vehicle collide  in the collision box more than 3 times within 2 seconds then play a different sound. show code
 
-ChatGPT
 
 let collisionCounter = 0;
 let firstCollisionTime = 0;
