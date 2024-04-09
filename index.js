@@ -16,14 +16,20 @@ var muted = false;
 var isFirstPerson = true;
 var currentTrack = 0;
 
+
 const playlist = [
-  'woke-up-this-morning.mp3',
-  'dont-stop-believing.mp3',
-  'i-have-but-one-heart.mp3',
-  'push-it-to-the-limit.mp3',
-  'connie-wedding.mp3',
-  'little-girl-of-mine',
-  'dust-my-broom',
+  //These 3 songs below are non copy righted music
+  'song1.mp3',
+  'song2.mp3',
+  'song3.mp3',
+  //Copy-righted music, we are not going to use these songs
+  // 'woke-up-this-morning.mp3',
+  // 'dont-stop-believing.mp3',
+  // 'i-have-but-one-heart.mp3',
+  // 'push-it-to-the-limit.mp3',
+  // 'connie-wedding.mp3',
+  // 'little-girl-of-mine',
+  // 'dust-my-broom',
 ];
 
 function init() {
@@ -693,6 +699,15 @@ function uiUpdate() {
     hud.rotation.y = angle.y;
 }
 
+
+//Update time in non vr mode
+//This code section is created by chatGPT 4
+//Prompt:
+// write simple non vr hud for this. It looks like
+// Press C to reset the bus if you flipped it
+// Press F to mute/unmute the sound
+// Time elapse: [minutes][seconds]
+
 function updateHUDTimer() {
   const elapsed = Math.floor(clock.getElapsedTime());
   const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
@@ -960,8 +975,9 @@ function controllerInput() {
 //Collision sound
 let collisionCounter = 0;
 let firstCollisionTime = 0;
+//These sounds are from freesound.org and there is absolutely no copyright infringement
 const collisionSound = new Howl({ src: ['collision-sound.wav'] });
-const repeatedCollisionSound = new Howl({ src: ['oh-oh.wav'] });
+const repeatedCollisionSound = new Howl({ src: ['oh.wav'] });
 physicsWorld.addEventListener("beginContact", (event) => {
   const bodyA = event.bodyA;
   const bodyB = event.bodyB;
@@ -979,7 +995,7 @@ physicsWorld.addEventListener("beginContact", (event) => {
       collisionCounter = 0;  // Reset counter after playing sound
     } else {
       collisionSound.play();
-    }
+    } 
   }
 });
 

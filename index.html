@@ -4,8 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VR Bus Simulator</title>
+    <style>
+        #hud {
+  z-index: 100;
+  pointer-events: none; /* This makes the HUD click-through */
+}
+//Update time in non vr mode
+//This code section is created by chatGPT 4
+//Prompt:
+// write simple non vr hud for this. It looks like
+// Press C to reset the bus if you flipped it
+// Press F to mute/unmute the sound
+// Time elapse: [minutes][seconds]
+
+#hud #instructions {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#hud #timer {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+    </style>
 </head>
 <body>
     <script type="module" src="index.js"></script>
+    <div id="hud" style="position: absolute; top: 0; left: 0; margin: 10px; color: white; font-family: Arial, sans-serif;">
+        <div id="instructions">
+          <p>Press C to reset the bus if you flipped it</p>
+          <p>Press F to mute/unmute the sound</p>
+        </div>
+        <div id="timer">Time Elapsed: <span id="minutes">00</span>:<span id="seconds">00</span></div>
+      </div>
+      
 </body>
 </html>
