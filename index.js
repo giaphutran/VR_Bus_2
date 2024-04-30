@@ -38,17 +38,17 @@ const playlist = [
 Upbeat Funk Podcast by Infraction [No Copyright Music] / Funk Town
 Upbeat Funk Fashion by Infraction [No Copyright Music] / Holiday Party
 Upbeat Funk Background by Infraction [No Copyright Music] / Step Club */
-  'song1.mp3',  
-  'song2.mp3',
-  'song3.mp3',
+  // 'song1.mp3',  
+  // 'song2.mp3',
+  // 'song3.mp3',
   //Copy-righted music, we are not going to use these songs
-  // 'woke-up-this-morning.mp3',
-  // 'dont-stop-believing.mp3',
-  // 'i-have-but-one-heart.mp3',
-  // 'push-it-to-the-limit.mp3',
-  // 'connie-wedding.mp3',
-  // 'little-girl-of-mine',
-  // 'dust-my-broom',
+  'woke-up-this-morning.mp3',
+  'dont-stop-believing.mp3',
+  'i-have-but-one-heart.mp3',
+  'push-it-to-the-limit.mp3',
+  'connie-wedding.mp3',
+  'little-girl-of-mine',
+  'dust-my-broom',
 ];
 
 function init() {
@@ -1007,7 +1007,7 @@ let collisionCounter = 0;
 let firstCollisionTime = 0;
 //These sounds are from freesound.org and there is absolutely no copyright infringement
 const collisionSound = new Howl({ src: ['collision-sound.wav'] });
-const repeatedCollisionSound = new Howl({ src: ['oh.wav'] });
+const repeatedCollisionSound = new Howl({ src: ['oh-oh.wav'] });
 physicsWorld.addEventListener("beginContact", (event) => {
   const bodyA = event.bodyA;
   const bodyB = event.bodyB;
@@ -1038,7 +1038,7 @@ function animate() {
     physicsWorld.fixedStep();
     ThreeMeshUI.update();
     // For Debugging the Collision
-    //cannonDebugger.update();
+    cannonDebugger.update();
     vehicle.chassisBody.quaternion.toEuler(angle);
     if (busModel) {
         // Update the bus's position and rotation
