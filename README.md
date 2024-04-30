@@ -13,11 +13,13 @@ Right joystick: Move left to steer left, right to steer right.
   ![alt text](image-2.png)![alt text](image-3.png)
 
 “A” button on the right joystick: Press once to mute all sound. Press again to unmute.
+
  ![alt text](image-4.png)
 
 “B” button on the right joystick: Press once to switch to 3rd person view. Press again to revert to 1st person view.
 
  ![alt text](image-5.png)
+ 
 “X” button on the left joystick: Press once to reset the vehicle if flipped.
 
 ![alt text](image-6.png)
