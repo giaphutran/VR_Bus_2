@@ -37,7 +37,8 @@ Press A/D to steer left/right.
 “C”: Press once to reset the vehicle if flipped.
 
  ![alt text](image-10.png)
-The HUD at the upper left shows time elapsed since the game started, as well as the button layout.
+
+The HUD at the upper left shows time elapsed since the game started, as well as the button layout
 
 ![alt text](image-11.png)
  
