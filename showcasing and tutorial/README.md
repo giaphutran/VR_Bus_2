@@ -16,9 +16,10 @@ For VR-mode (Base on Meta Quest 2 controller layout):
 
 Left joystick: Move forward to accelerate, backward to decelerate.
 
-![alt text](image.png)![alt text](image-1.png)
+[](README.md) ![text](image.png)[](README.md) ![text](image-1.png)
 
-Right joystick: Move left to steer left, right to steer right.
+
+Right joystick: Move left to steer left, right to steer right
 
   ![alt text](image-2.png)![alt text](image-3.png)
 
