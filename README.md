@@ -1,4 +1,14 @@
 # VR_Bus_2
+## Showcase 
+
+### Cannon.js Debugging environment
+
+![alt text](<vr bus debug.gif>)
+
+### Actual non-VR gameplay
+
+![alt text](<non debug vr bus 10s.gif>)
+
 ## User Manual
 User Manual
 
@@ -19,7 +29,7 @@ Right joystick: Move left to steer left, right to steer right.
 “B” button on the right joystick: Press once to switch to 3rd person view. Press again to revert to 1st person view.
 
  ![alt text](image-5.png)
- 
+
 “X” button on the left joystick: Press once to reset the vehicle if flipped.
 
 ![alt text](image-6.png)
