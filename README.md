@@ -3,6 +3,13 @@
 VR_Bus_2 is a non-VR and VR simulator of a realistic bus driving experience. Third-person perspective is available in non-VR mode, while both first and third person perspective are available in VR mode.
 This project was built primarily over the course of 11 weeks and getting consistent updates in features
 
+## How to install
+### Clone the repository
+In Git Bash, go to your desirable directory, and clone the repository there using this line
+```cpp
+git clone https://github.com/giaphutran/VR_Bus_2.git
+```
+
 ## Showcase 
 
 ### Cannon.js Debugging environment
