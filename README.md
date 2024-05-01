@@ -1,4 +1,8 @@
 # VR_Bus_2
+
+VR_Bus_2 is a non-VR and VR simulator of a realistic bus driving experience. Third-person perspective is available in non-VR mode, while both first and third person perspective are available in VR mode.
+This project was built primarily over the course of 11 weeks and getting consistent updates in features
+
 ## Showcase 
 
 ### Cannon.js Debugging environment
