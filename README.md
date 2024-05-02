@@ -10,6 +10,10 @@ In Git Bash, go to your desirable directory, and clone the repository there usin
 git clone https://github.com/giaphutran/VR_Bus_2.git
 ```
 
+After that, install pip
+
+Then, install Node.js
+
 ## Showcase 
 
 ### Cannon.js Debugging environment
