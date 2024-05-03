@@ -74,13 +74,22 @@ If you are not successful using this way, try reading the article in this link a
 
 Then, install Node.js
 
-Go to this link
+Go to this link, download the installation file, make sure to add Chocolatey app during the installation process
 ```cpp
 https://nodejs.org/en/download
 ```
 
+### Important
+After installing Node.js, go to your Windows search bar, type "Node"
+Select "Open file location" on the side menu
 
-## Showcase 
+![alt text](<showcasing and tutorial/node-1.png>)
+
+It will lead you to the location of another shortcut. Just right click and choose "Open file location" again.
+
+![alt text](<showcasing and tutorial/node-2.png>)
+
+
 
 ### Cannon.js Debugging environment
 
@@ -90,6 +99,10 @@ https://nodejs.org/en/download
 
 
 ![alt text](<showcasing and tutorial/non debug vr bus 10s.gif>)
+
+Then, copy the path that it leads you to
+
+![alt text](<showcasing and tutorial/node-3.png>)
 
 ## User Manual
 
