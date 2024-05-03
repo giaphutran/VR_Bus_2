@@ -5,12 +5,23 @@ This project was built primarily over the course of 11 weeks and getting consist
 
 ## How to install
 ### Clone the repository
-In Git Bash, go to your desirable directory, and clone the repository there using this line
+#### 1. Clone repository
+In Git Bash, go to your desirable directory, and clone the repository 
 ```cpp
 git clone https://github.com/giaphutran/VR_Bus_2.git
 ```
 
+#### 2. Install dependencies
+Check if python is installed on your machine by typing "python" to your command line
+
+```cpp
+python
+```
+
+
+
 After that, install pip
+
 
 Then, install Node.js
 
@@ -56,6 +67,7 @@ The HUD at the upper right shows time elapsed since the game started, as well as
 
 
  [](README.md) ![text](<showcasing and tutorial/image-7.png>)
+
 For non-VR mode (Keyboard):
 “WASD”: Press W to accelerate. Press S to decelerate or reverse the bus.
 Press A/D to steer left/right.
@@ -67,6 +79,7 @@ Press A/D to steer left/right.
 
  
  [](README.md) ![text](<showcasing and tutorial/image-9.png>)
+
 “C”: Press once to reset the vehicle if flipped.
 
   [](README.md) ![text](<showcasing and tutorial/image-10.png>)
