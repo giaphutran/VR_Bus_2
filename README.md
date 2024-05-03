@@ -12,6 +12,7 @@ git clone https://github.com/giaphutran/VR_Bus_2.git
 ```
 
 #### 2. Install dependencies
+##### a. Python
 Check if python is installed on your machine by typing "python" to your command line
 
 ```cpp
@@ -42,7 +43,7 @@ then you just better off go to the python original page and install it. Make sur
 ```cpp
 https://www.python.org/downloads/
 ```
-
+##### b. pip
 After that, install pip.
 
 Since Python 3.4 and Python 2.7.9, Python installation already comes with pip.
@@ -71,7 +72,7 @@ Successfully installed pip -22.1.2 wheel-0.37.1
 ```
 If you are not successful using this way, try reading the article in this link and see if it works https://www.geeksforgeeks.org/how-to-install-pip-on-windows/
 
-
+##### c. Node.js
 Then, install Node.js
 
 Go to this link, download the installation file, make sure to add Chocolatey app during the installation process
@@ -79,7 +80,9 @@ Go to this link, download the installation file, make sure to add Chocolatey app
 https://nodejs.org/en/download
 ```
 
-### Important
+#### Important: Add Node.js to Path
+You must do this in order for the system to recognize Node.js in this project, skipping this step can lead to errors like "npx not recognized as an internal or external command".
+
 After installing Node.js, go to your Windows search bar, type "Node"
 Select "Open file location" on the side menu
 
@@ -95,9 +98,19 @@ Then, copy the path that it leads you to.
 
 Now, in your Windows search bar, find "Environment variables"
 
-![alt text](<showcasing and tutorial/node-4.png>)
+Open it, then choose "Environment Variables" in the bottom right corner
 
-Open it, then choose "Environment 
+![alt text](<showcasing and tutorial/node-5.png>)
+
+In the "system variables" section, find "Path", click Edit
+
+![alt text](<showcasing and tutorial/node-6.png>)
+
+Then, in the new window, click "New", and paste the Path you copy earlier there.
+![alt text](<showcasing and tutorial/node-7.png>)
+
+
+
 
 
 ### Cannon.js Debugging environment
