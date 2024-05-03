@@ -44,6 +44,7 @@ https://www.python.org/downloads/
 ```
 
 After that, install pip.
+
 Since Python 3.4 and Python 2.7.9, Python installation already comes with pip.
 Run this line to check if pip is installed
 ```cpp
