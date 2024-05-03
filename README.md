@@ -109,8 +109,17 @@ In the "system variables" section, find "Path", click Edit
 Then, in the new window, click "New", and paste the Path you copy earlier there.
 ![alt text](<showcasing and tutorial/node-7.png>)
 
+#### Last step, I promise!
 
+Open the repositoryn folder with Visual Studio Code, Go to "Terminal"-->"New Terminal", then type
+```cpp
+npx vite
+```
+It will show you a link to the simulator
 
+![alt text](<showcasing and tutorial/node-8.png>)
+
+Crtl + Left Click to follow the link and enjoy!
 
 
 ### Cannon.js Debugging environment
