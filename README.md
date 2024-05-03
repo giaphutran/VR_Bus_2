@@ -89,6 +89,15 @@ It will lead you to the location of another shortcut. Just right click and choos
 
 ![alt text](<showcasing and tutorial/node-2.png>)
 
+Then, copy the path that it leads you to.
+
+![alt text](<showcasing and tutorial/node-3.png>)
+
+Now, in your Windows search bar, find "Environment variables"
+
+![alt text](<showcasing and tutorial/node-4.png>)
+
+Open it, then choose "Environment 
 
 
 ### Cannon.js Debugging environment
@@ -100,9 +109,8 @@ It will lead you to the location of another shortcut. Just right click and choos
 
 ![alt text](<showcasing and tutorial/non debug vr bus 10s.gif>)
 
-Then, copy the path that it leads you to
 
-![alt text](<showcasing and tutorial/node-3.png>)
+
 
 ## User Manual
 
