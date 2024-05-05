@@ -42,6 +42,7 @@ Upbeat Funk Background by Infraction [No Copyright Music] / Step Club */
   // 'song2.mp3',
   // 'song3.mp3',
   //Copy-righted music, we are not going to use these songs
+  'danger-zone.mp3',
   'woke-up-this-morning.mp3',
   'dont-stop-believing.mp3',
   'i-have-but-one-heart.mp3',
@@ -49,6 +50,7 @@ Upbeat Funk Background by Infraction [No Copyright Music] / Step Club */
   'connie-wedding.mp3',
   'little-girl-of-mine',
   'dust-my-broom',
+
 ];
 
 function init() {
